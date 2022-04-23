@@ -22,7 +22,7 @@ class InsertionSort {
         for (i in 1..n) {
             key = list.get(i)
             j = i - 1
-            while (j >= 0 && list.get(index = j) > key){
+            while (j >= 0 && list.get(index = j) < key){
                 list.set(index = j + 1, list.get(index = j) )
                 j -= 1
             }
