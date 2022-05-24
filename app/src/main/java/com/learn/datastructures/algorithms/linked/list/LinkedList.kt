@@ -12,4 +12,12 @@ class LinkedList<T: Any> {
         return if (isEmpty()) "Empty List" else head.toString()
     }
 
+    fun push(value: T): LinkedList<T> = apply {
+        head = Node(value = value, next = head)
+        if (tail == null) {
+            tail = head
+        }
+        size++
+    }
+
 }

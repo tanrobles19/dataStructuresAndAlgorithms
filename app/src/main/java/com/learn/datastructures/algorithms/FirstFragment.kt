@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
+import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.linked.list.Node
 import com.learn.datastructures.algorithms.sort.InsertionSort
 
@@ -43,14 +44,11 @@ class FirstFragment : Fragment() {
 
         binding.buttonLinkedList.setOnClickListener {
 
-            val node1 = Node(value = 1)
-            val node2 = Node(value = 2)
-            val node3 = Node(value = 3)
+            val list = LinkedList<Int> ()
 
-            node1.next = node2
-            node2.next = node3
+            list.push(1).push(2).push(3)
 
-            println(node1)
+            println(list)
 
         }
 
