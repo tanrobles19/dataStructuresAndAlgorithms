@@ -46,7 +46,10 @@ class FirstFragment : Fragment() {
 
             val list = LinkedList<Int> ()
 
-            list.push(1).push(2).push(3)
+            list.append(1)
+            list.append(2)
+            list.append(3)
+            list.append(4)
 
             println(list)
 

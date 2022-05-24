@@ -20,4 +20,17 @@ class LinkedList<T: Any> {
         size++
     }
 
+    fun append(value: T) {
+        if(isEmpty()) {
+            push(value = value)
+            return
+        }
+
+        val newNode = Node(value =  value)
+        tail?.next = newNode
+
+        tail = newNode
+        size++
+    }
+
 }
