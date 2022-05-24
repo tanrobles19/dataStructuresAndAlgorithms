@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
+import com.learn.datastructures.algorithms.linked.list.Node
 import com.learn.datastructures.algorithms.sort.InsertionSort
 
 /**
@@ -20,14 +21,9 @@ class FirstFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +40,21 @@ class FirstFragment : Fragment() {
 
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
-    }
+
+        binding.buttonLinkedList.setOnClickListener {
+
+            val node1 = Node(value = 1)
+            val node2 = Node(value = 2)
+            val node3 = Node(value = 3)
+
+            node1.next = node2
+            node2.next = node3
+
+            println(node1)
+
+        }
+
+    }// end fun onViewCreated
 
     override fun onDestroyView() {
         super.onDestroyView()
