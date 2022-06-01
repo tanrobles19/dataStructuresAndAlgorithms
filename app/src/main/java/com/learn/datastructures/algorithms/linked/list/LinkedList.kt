@@ -94,4 +94,20 @@ class LinkedList<T: Any> {
 
     }// end fun removeByValue()
 
+    fun pop(): T? {
+        if(isEmpty()) {
+            tail = null
+            return null
+        }
+        size--
+        val value = head?.value
+        head = head?.next
+
+        return value
+    }// end fun pop()
+
+    fun removeLast() {
+
+    }
+
 }
