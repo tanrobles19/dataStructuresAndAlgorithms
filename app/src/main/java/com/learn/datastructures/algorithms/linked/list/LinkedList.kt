@@ -33,4 +33,22 @@ class LinkedList<T: Any> {
         size++
     }
 
+    fun nodeAt(index: Int): Node<T>? {
+
+        var currentNode = head
+        var currentIndex = 0
+
+        while ( currentNode != null && currentIndex < index) {
+            currentNode = currentNode.next
+            currentIndex++
+        }
+        return currentNode
+    }
+
+    fun insert(newNode: Node<T>, nodeAt: Node<T>) {
+        newNode.next = nodeAt.next
+        nodeAt.next = newNode
+        size++
+    }
+
 }

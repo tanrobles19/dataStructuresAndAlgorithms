@@ -50,6 +50,16 @@ class FirstFragment : Fragment() {
             list.append(2)
             list.append(3)
             list.append(4)
+            list.append(5)
+            list.append(6)
+            list.append(7)
+
+            println(list)
+
+            list.nodeAt(10)?.let {
+                val node = Node(70, null)
+                list.insert(node, it)
+            }
 
             println(list)
 
