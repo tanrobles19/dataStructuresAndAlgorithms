@@ -63,4 +63,35 @@ class LinkedList<T: Any> {
         size++
     }
 
+    fun removeByIndex(index: Int) {
+
+        if(index == 0) {
+            head = head!!.next
+            return
+        }
+
+        val nodeAt = nodeAt(index - 1)
+
+        val nodeNext = nodeAt?.next?.next
+
+        nodeAt!!.next = nodeNext
+
+        size--
+    }
+
+    fun removeByValue(value: Int) {
+
+        var nodeTemp = head
+        var index = 0
+
+        while ( nodeTemp != null){
+            if (nodeTemp.value == value) {
+                removeByIndex(index)
+            }
+            index++
+            nodeTemp = nodeTemp.next
+        }
+
+    }// end fun removeByValue()
+
 }
