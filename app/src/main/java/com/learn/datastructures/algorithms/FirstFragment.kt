@@ -47,14 +47,13 @@ class FirstFragment : Fragment() {
             val list = LinkedList<Int> ()
 
             list.append(1)
-//            list.append(2)
-//            list.append(3)
-//            list.append(4)
-//            list.append(5)
+            list.append(2)
 
             println(list)
 
-            println("Pop() ${list.pop()}")
+//            println("Pop() ${list.pop()}")
+
+            println("RemoveLast() ${list.removeLast()}")
 
 //            list.pop()
 

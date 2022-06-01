@@ -94,9 +94,12 @@ class LinkedList<T: Any> {
 
     }// end fun removeByValue()
 
+    /*
+    * Time Complexity: Constant Time O(1)
+    *
+    * */
     fun pop(): T? {
         if(isEmpty()) {
-            tail = null
             return null
         }
         size--
@@ -106,8 +109,34 @@ class LinkedList<T: Any> {
         return value
     }// end fun pop()
 
-    fun removeLast() {
+    /*
+    * Time Complexity: Linear Time O(i)
+    *
+    * */
+    fun removeLast() :T? {
 
-    }
+        if (isEmpty()) {
+            return null
+        }
+
+        val value = tail?.value
+
+        if(size == 1) {
+            head = null
+            tail = null
+            size = 0
+            return value
+        }
+
+        val newTail = nodeAt(size -2)
+
+        newTail?.next = null
+        tail = newTail
+
+        size--
+
+        return value
+
+    }// end fun removeLast()
 
 }
