@@ -12,6 +12,10 @@ class LinkedList<T: Any> {
         return if (isEmpty()) "Empty List" else head.toString()
     }
 
+    /*
+    * Time Complexity: Constant Time O(1)
+    *
+    * */
     fun push(value: T): LinkedList<T> = apply {
         head = Node(value = value, next = head)
         if (tail == null) {
@@ -20,6 +24,10 @@ class LinkedList<T: Any> {
         size++
     }
 
+    /*
+    * Time Complexity: Constant Time O(1)
+    *
+    * */
     fun append(value: T) {
         if(isEmpty()) {
             push(value = value)
@@ -33,6 +41,10 @@ class LinkedList<T: Any> {
         size++
     }
 
+    /*
+    * Time Complexity: Linear Time O(i)
+    *
+    * */
     fun nodeAt(index: Int): Node<T>? {
 
         var currentNode = head
