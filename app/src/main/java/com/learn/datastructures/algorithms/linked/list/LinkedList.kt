@@ -1,6 +1,6 @@
 package com.learn.datastructures.algorithms.linked.list
 
-class LinkedList<T: Any> : Collection<T>, MutableIterable<T>{
+class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<T>{
 
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
@@ -31,6 +31,39 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>{
         }
         return true
     }
+
+    override fun add(element: T): Boolean {
+        val node = Node(element, null)
+        if(isEmpty()) {
+            head = node
+        }else{
+            tail?.next = node
+        }
+        tail = node
+        size++
+        return true
+    }
+
+    override fun addAll(elements: Collection<T>): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun clear() {
+        TODO("Not yet implemented")
+    }
+
+    override fun remove(element: T): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeAll(elements: Collection<T>): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun retainAll(elements: Collection<T>): Boolean {
+        TODO("Not yet implemented")
+    }
+
 
     /*
     * Time Complexity: Constant Time O(1)
