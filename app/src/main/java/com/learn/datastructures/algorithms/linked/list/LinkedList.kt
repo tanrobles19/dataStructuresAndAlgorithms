@@ -45,11 +45,16 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     }
 
     override fun addAll(elements: Collection<T>): Boolean {
-        TODO("Not yet implemented")
+        for (item in elements) {
+            add(item)
+        }
+        return true
     }
 
     override fun clear() {
-        TODO("Not yet implemented")
+        head = null
+        tail = null
+        size = 0
     }
 
     override fun remove(element: T): Boolean {
