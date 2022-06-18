@@ -1,15 +1,35 @@
 package com.learn.datastructures.algorithms.linked.list
 
-class LinkedList<T: Any> {
+class LinkedList<T: Any> : Collection<T>, MutableIterable<T>{
 
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
-    private var size = 0
 
-    fun isEmpty(): Boolean = size == 0
+    override var size = 0
+        private set
+
+    override fun isEmpty(): Boolean = size == 0
 
     override fun toString(): String {
         return if (isEmpty()) "Empty List" else head.toString()
+    }
+
+    override fun iterator() : MutableIterator<T> {
+        return LinkedListIterator(this)
+    }
+
+    override fun contains(element: T): Boolean {
+        for(item in this) {
+            if (item ==  element) return true
+        }
+        return false
+    }
+
+    override fun containsAll(elements: Collection<T>): Boolean {
+        for ( search in elements) {
+            if(! contains(search)) return false
+        }
+        return true
     }
 
     /*
@@ -138,5 +158,21 @@ class LinkedList<T: Any> {
         return value
 
     }// end fun removeLast()
+
+
+    fun removeAfter(node: Node<T>): T? {
+        val result = node.next?.value
+
+        if (node.next == tail) {
+            tail = node
+        }
+
+        if (node.next != null) {
+            size--
+        }
+
+        node.next = node.next?.next
+        return result
+    }
 
 }

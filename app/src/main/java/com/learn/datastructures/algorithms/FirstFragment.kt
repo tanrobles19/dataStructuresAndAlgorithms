@@ -44,16 +44,29 @@ class FirstFragment : Fragment() {
 
         binding.buttonLinkedList.setOnClickListener {
 
-            val list = LinkedList<Int> ()
+            val list = LinkedList<Int>()
+            list.push(5)
+            list.push(4)
+            list.push(3)
+            list.push(2)
+            list.push(1)
 
-            list.append(1)
-            list.append(2)
+            list.removeByValue(3)
 
-            println(list)
+            for (item in list) {
+                println("Node: $item")
+            }
+
+//            val list = LinkedList<Int> ()
+
+//            list.append(1)
+//            list.append(2)
+
+//            println(list)
 
 //            println("Pop() ${list.pop()}")
 
-            println("RemoveLast() ${list.removeLast()}")
+//            println("RemoveLast() ${list.removeLast()}")
 
 //            list.pop()
 
@@ -66,7 +79,7 @@ class FirstFragment : Fragment() {
 //                list.insert(node, it)
 //            }
 
-            println(list)
+//            println(list)
 
         }
 
