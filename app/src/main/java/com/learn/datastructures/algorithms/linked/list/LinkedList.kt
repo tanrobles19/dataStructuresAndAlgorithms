@@ -33,15 +33,19 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     }
 
     override fun add(element: T): Boolean {
-        val node = Node(element, null)
-        if(isEmpty()) {
-            head = node
-        }else{
-            tail?.next = node
-        }
-        tail = node
-        size++
+
+        append(element)
         return true
+
+//        val node = Node(element, null)
+//        if(isEmpty()) {
+//            head = node
+//        }else{
+//            tail?.next = node
+//        }
+//        tail = node
+//        size++
+//        return true
     }
 
     override fun addAll(elements: Collection<T>): Boolean {
@@ -58,24 +62,37 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     }
 
     override fun remove(element: T): Boolean {
-        if(isEmpty())
-            return false
 
-        if(head?.value == element) {
-            head = head?.next
-            size--
-            if(head == null) {
-                clear()
-            }
-            return true
-        }else{
-            findByElementValue(element)?.let {
-                it.next = it.next?.next
-                size--
+        val iterator = iterator()
+
+        while (iterator.hasNext()) {
+            val item = iterator.next()
+            if(element == item) {
+                iterator.remove()
                 return true
             }
         }
+
         return false
+
+//        if(isEmpty())
+//            return false
+//
+//        if(head?.value == element) {
+//            head = head?.next
+//            size--
+//            if(head == null) {
+//                clear()
+//            }
+//            return true
+//        }else{
+//            findByElementValue(element)?.let {
+//                it.next = it.next?.next
+//                size--
+//                return true
+//            }
+//        }
+//        return false
     }// end remove fun
 
     fun findByElementValue(element: T) : Node<T>? {
@@ -102,8 +119,19 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     }
 
     override fun retainAll(elements: Collection<T>): Boolean {
-        TODO("Not yet implemented")
-    }
+
+        var result = false
+        val iterator = iterator()
+
+        while (iterator.hasNext()) {
+            val node = iterator.next()
+            if(!elements.contains(node)) {
+                iterator.remove()
+                result = true
+            }
+        }
+        return result
+    }// end fun retainAll()
 
     /*
     * Time Complexity: Constant Time O(1)
