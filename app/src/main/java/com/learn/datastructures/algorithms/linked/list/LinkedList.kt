@@ -58,17 +58,52 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     }
 
     override fun remove(element: T): Boolean {
-        TODO("Not yet implemented")
+        if(isEmpty())
+            return false
+
+        if(head?.value == element) {
+            head = head?.next
+            size--
+            if(head == null) {
+                clear()
+            }
+            return true
+        }else{
+            findByElementValue(element)?.let {
+                it.next = it.next?.next
+                size--
+                return true
+            }
+        }
+        return false
+    }// end remove fun
+
+    fun findByElementValue(element: T) : Node<T>? {
+
+        if (!isEmpty() && head?.value == element)
+            return head
+
+        var nodeTemp = head
+
+        while ( nodeTemp?.next != null) {
+            if(element ==  nodeTemp.next?.value) {
+                return nodeTemp
+            }
+            nodeTemp = nodeTemp.next
+        }
+        return null
     }
 
     override fun removeAll(elements: Collection<T>): Boolean {
-        TODO("Not yet implemented")
+        for(element in elements) {
+            remove(element)
+        }
+        return false
     }
 
     override fun retainAll(elements: Collection<T>): Boolean {
         TODO("Not yet implemented")
     }
-
 
     /*
     * Time Complexity: Constant Time O(1)
