@@ -57,9 +57,9 @@ class FirstFragment : Fragment() {
             list.add(9)
             list.add(10)
 
-            list.removeAll(listOf(1, 3, 5, 7, 9))
+//            list.removeAll(listOf(1, 3, 5, 7, 9))
 
-            list.removeAll(listOf(2, 10))
+//            list.removeAll(listOf(2, 10))
 
 //            list.remove(1)
 
@@ -69,6 +69,12 @@ class FirstFragment : Fragment() {
 
             for (item in list) {
                 println("Node: $item")
+            }
+
+            val reverseList = list.reverseList()
+
+            for (item in reverseList) {
+                println("reverse: $item")
             }
 
 //            val list = LinkedList<Int> ()

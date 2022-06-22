@@ -276,4 +276,22 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
         return result
     }
 
+    fun reverseList(): LinkedList<T> {
+
+        val iterator = iterator()
+
+        val tempList = LinkedList<T>()
+
+        while (iterator.hasNext()) {
+            val value = pop()
+            value?.let {
+                tempList.push(it)
+            }
+
+        }
+
+        return tempList
+
+    }
+
 }
