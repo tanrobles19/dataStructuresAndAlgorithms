@@ -292,6 +292,10 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
 
         return tempList
 
+    }// end fun reverseList()
+
+    fun printInReverse() {
+        this.head?.printInReverse()
     }
 
 }

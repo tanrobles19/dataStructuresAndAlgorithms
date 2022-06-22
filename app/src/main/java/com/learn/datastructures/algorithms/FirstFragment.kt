@@ -71,11 +71,13 @@ class FirstFragment : Fragment() {
                 println("Node: $item")
             }
 
-            val reverseList = list.reverseList()
+//            val reverseList = list.reverseList()
 
-            for (item in reverseList) {
-                println("reverse: $item")
-            }
+            list.printInReverse()
+
+//            for (item in reverseList) {
+//                println("reverse: $item")
+//            }
 
 //            val list = LinkedList<Int> ()
 

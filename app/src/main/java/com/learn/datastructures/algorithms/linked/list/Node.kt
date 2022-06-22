@@ -8,4 +8,15 @@ data class Node<T: Any>(var value: T, var next: Node<T>? = null){
             "$value"
         }
     }
+
+    fun printInReverse() {
+        this.next?.printInReverse()
+
+        if(this.next != null)
+            print(" <- ")
+
+        print(this.value.toString())
+
+    }// end
+
 }
