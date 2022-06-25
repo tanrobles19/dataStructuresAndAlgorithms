@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
+import com.learn.datastructures.algorithms.linked.list.findElementToMerge
+import com.learn.datastructures.algorithms.linked.list.merge
 import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.sort.InsertionSort
 
@@ -45,19 +47,20 @@ class FirstFragment : Fragment() {
         binding.buttonLinkedList.setOnClickListener {
 
             val listA = LinkedList<Int>().apply {
-                add(6)
-                add(8)
                 add(9)
             }
 
             val listB = LinkedList<Int>().apply {
-                add(1)
                 add(2)
-                add(3)
                 add(4)
+                add(6)
+                add(8)
+                add(10)
             }
 
-            listB.mergeSorted(listA)
+//            listB.mergeSorted(listA)
+
+            println(listA.mergeSorted(listB))
 
 //            list.removeAll(listOf(1, 3, 5, 7, 9))
 

@@ -5,57 +5,45 @@ fun <T : Comparable<T>> LinkedList<T>.mergeSorted(otherList: LinkedList<T>): Lin
     if(this.isEmpty()) return otherList
     if(otherList.isEmpty()) return this
 
-    if(this.size <=  otherList.size) {
+    return if(this.size <=  otherList.size) {
         merge(this, otherList)
     }else{
         merge(otherList, this)
     }
 
-    return otherList
+}
 
+fun <T : Comparable<T>> LinkedList<T>.merge(small: LinkedList<T>, big: LinkedList<T>) : LinkedList<T>{
+
+    var temp = small.head
+
+    while (temp != null) {
+        println(temp.value)
+
+        val node = big.findElementToMerge(temp.value)
+
+        val storeNext = node?.next
+
+        node?.next = Node(temp.value, storeNext)
+
+        temp = temp.next
     }
+    return big
+}
 
-    fun <T : Comparable<T>> LinkedList<T>.merge(small: LinkedList<T>, big: LinkedList<T>) {
+fun <T : Comparable<T>> LinkedList<T>.findElementToMerge(element: T): Node<T>? {
 
-        var result = LinkedList<T>()
+    var temp = this.head
 
-        var temp = small.head
+    while(temp != null) {
 
-        while (temp != null) {
-            println(temp.value)
-            temp = temp.next
+        val current = temp.next?.value
+
+        if(current != null && current >= element) {
+            return temp
         }
+
+        temp = temp.next
     }
-
-//
-////    if (this.isEmpty()) return otherList
-////    if (otherList.isEmpty()) return this
-//
-//    val result = LinkedList<T>()
-//
-//    var left = nodeAt(0)
-//    var right = otherList.nodeAt(0)
-//
-//    while (left != null && right != null) {
-//        if (left.value < right.value) {
-//            left = append(result, left)
-//        } else {
-//            right = append(result, right)
-//        }
-//    }
-//
-//    while (left != null) {
-//        left = append(result, left)
-//    }
-//
-//    while (right != null) {
-//        right = append(result, right)
-//    }
-
-//    return LinkedList<T>()
-//}
-
-private fun <T : Comparable<T>> append(result: LinkedList<T>, node: Node<T>): Node<T>? {
-    result.append(node.value)
-    return node.next
+    return this.tail
 }
