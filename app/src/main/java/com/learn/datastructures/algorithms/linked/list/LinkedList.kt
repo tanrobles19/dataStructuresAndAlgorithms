@@ -2,8 +2,8 @@ package com.learn.datastructures.algorithms.linked.list
 
 class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<T>{
 
-    private var head: Node<T>? = null
-    private var tail: Node<T>? = null
+    public var head: Node<T>? = null
+    public var tail: Node<T>? = null
 
     override var size = 0
         private set
@@ -297,5 +297,63 @@ class LinkedList<T: Any> : Collection<T>, MutableIterable<T>, MutableCollection<
     fun printInReverse() {
         this.head?.printInReverse()
     }
+
+    fun reverse() {
+//        this.head?.reverse()
+//        this.head = tail
+
+        this.head?.reverseTest()
+
+    }
+
+    fun middleOfTheList(): T? {
+
+        val middle = this.size / 2
+
+        var index = 0
+
+        val iterator = iterator()
+
+        while(iterator.hasNext()) {
+
+            iterator.next()
+
+            if(middle == index) return iterator.next()
+
+            index++
+        }// end while
+        return null
+    }// end fun middleOfTheList()
+
+//    fun mergeLists(otherList: LinkedList<T>): LinkedList<T> {
+//
+//        if(this.isEmpty()) return otherList
+//        if(otherList.isEmpty()) return this
+//
+//        if(this.size <=  otherList.size) {
+//            //We are going to iterate listA
+//
+//            if(this.head?.value!! >= otherList.tail?.value!! ){
+//                otherList.tail?.next = this.head
+//                otherList.tail = this.tail
+//            }
+//
+////            val iterator = this.iterator()
+////
+////            while (iterator.hasNext()) {
+////
+////                val value = iterator.next()
+////                    var node = findByElementValue(value)
+////                        node?.next = iterator.
+////
+////            }// end while
+////
+////            return otherList
+//
+//        }// end if
+//
+//        return LinkedList<T>()
+//
+//    }// end fun mergeLists()
 
 }

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
-import com.learn.datastructures.algorithms.linked.list.Node
+import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.sort.InsertionSort
 
 /**
@@ -44,18 +44,20 @@ class FirstFragment : Fragment() {
 
         binding.buttonLinkedList.setOnClickListener {
 
-            val list = LinkedList<Int>()
+            val listA = LinkedList<Int>().apply {
+                add(6)
+                add(8)
+                add(9)
+            }
 
-            list.add(1)
-            list.add(2)
-            list.add(3)
-            list.add(4)
-            list.add(5)
-            list.add(6)
-            list.add(7)
-            list.add(8)
-            list.add(9)
-            list.add(10)
+            val listB = LinkedList<Int>().apply {
+                add(1)
+                add(2)
+                add(3)
+                add(4)
+            }
+
+            listB.mergeSorted(listA)
 
 //            list.removeAll(listOf(1, 3, 5, 7, 9))
 
@@ -67,14 +69,26 @@ class FirstFragment : Fragment() {
 
 //            list.removeByValue(3)
 
-            for (item in list) {
-                println("Node: $item")
-            }
+//            println("size: " + list.size)
+//
+//            for (item in list) {
+//                println("Node: $item")
+//            }
+
+//            list.reverse()
+
+//            for (item in list) {
+//                println("Node: $item")
+//            }
+
+
+//            println("The Middle of the list:")
+//            println(list.middleOfTheList())
 
 //            val reverseList = list.reverseList()
 
-            list.printInReverse()
-
+//            list.printInReverse()
+//
 //            for (item in reverseList) {
 //                println("reverse: $item")
 //            }
