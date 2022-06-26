@@ -31,6 +31,24 @@ data class Node<T: Any>(var value: T, var next: Node<T>? = null){
 
     }
 
+    fun <T : Comparable<T>> Node<T>.findElementRecursive(element: T): Boolean{
+
+        val jobDone = this.next?.findElementRecursive(element)
+
+        if(jobDone == true){
+            return true
+        }
+
+        return if(this.value <= element) {
+            val next = this.next
+            this.next = Node(element, next)
+            true
+        }else{
+            false
+        }
+    }
+
+
     fun reverseTest() {
         this.next?.reverseTest()
 

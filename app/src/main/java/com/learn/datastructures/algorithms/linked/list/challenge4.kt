@@ -20,15 +20,28 @@ fun <T : Comparable<T>> LinkedList<T>.merge(small: LinkedList<T>, big: LinkedLis
     while (temp != null) {
         println(temp.value)
 
-        val node = big.findElementToMerge(temp.value)
-
-        val storeNext = node?.next
-
-        node?.next = Node(temp.value, storeNext)
+            big.head?.findElementRecursive(temp.value)
 
         temp = temp.next
     }
     return big
+}
+
+fun <T : Comparable<T>> Node<T>.findElementRecursive(element: T): Boolean{
+
+    val jobDone = this.next?.findElementRecursive(element)
+
+    if(jobDone == true){
+        return true
+    }
+
+    return if(this.value <= element) {
+        val next = this.next
+        this.next = Node(element, next)
+        true
+    }else{
+        false
+    }
 }
 
 fun <T : Comparable<T>> LinkedList<T>.findElementToMerge(element: T): Node<T>? {

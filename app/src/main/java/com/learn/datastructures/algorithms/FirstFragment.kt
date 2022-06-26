@@ -47,7 +47,7 @@ class FirstFragment : Fragment() {
         binding.buttonLinkedList.setOnClickListener {
 
             val listA = LinkedList<Int>().apply {
-                add(9)
+                add(3)
             }
 
             val listB = LinkedList<Int>().apply {
@@ -56,11 +56,12 @@ class FirstFragment : Fragment() {
                 add(6)
                 add(8)
                 add(10)
+                add(12)
             }
 
 //            listB.mergeSorted(listA)
 
-            println(listA.mergeSorted(listB))
+            println(listB.mergeSorted(listA))
 
 //            list.removeAll(listOf(1, 3, 5, 7, 9))
 
