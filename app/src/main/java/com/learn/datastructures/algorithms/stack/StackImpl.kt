@@ -17,14 +17,27 @@ class StackImpl<T: Any> : Stack<T> {
     }
 
     override fun pop(): T? {
-        if(isEmpty()) {
+        if(isEmpty) {
             return null
         }
-        return storage.removeAt(storage.size - 1)
+        return storage.removeAt(count - 1)
     }
 
-    private fun isEmpty() :Boolean {
-        return storage.size == 0
+    override val count: Int
+        get() = storage.size
+
+    override fun peek(): T? {
+        return storage.lastOrNull()
+    }
+
+    companion object{
+        fun <T: Any> create(items: Iterable<T>): Stack<T> {
+            val stack = StackImpl<T>()
+            for(item in items) {
+                stack.push(item)
+            }
+            return stack
+        }
     }
 
 }

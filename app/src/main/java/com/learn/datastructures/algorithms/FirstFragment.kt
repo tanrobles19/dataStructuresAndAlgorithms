@@ -60,19 +60,24 @@ class FirstFragment : Fragment() {
 //                add(12)
 //            }
 
-            val stack = StackImpl<Int>().apply {
-                push(1)
-                push(2)
-                push(3)
-                push(4)
-                push(5)
-            }
-
+            val list = listOf("A","B","C", "D")
+            val stack = StackImpl.create(list)
             print(stack)
+            println("Popped: ${stack.pop()}")
 
-            stack.pop()?.let {
-                println("Popped out $it")
-            }
+//            val stack = StackImpl<Int>().apply {
+//                push(1)
+//                push(2)
+//                push(3)
+//                push(4)
+//                push(5)
+//            }
+//
+//            print(stack)
+//
+//            stack.pop()?.let {
+//                println("Popped out $it")
+//            }
 
             print(stack)
 
