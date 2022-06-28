@@ -12,6 +12,7 @@ import com.learn.datastructures.algorithms.linked.list.findElementToMerge
 import com.learn.datastructures.algorithms.linked.list.merge
 import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.sort.InsertionSort
+import com.learn.datastructures.algorithms.stack.StackImpl
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -46,22 +47,38 @@ class FirstFragment : Fragment() {
 
         binding.buttonLinkedList.setOnClickListener {
 
-            val listA = LinkedList<Int>().apply {
-                add(3)
+//            val listA = LinkedList<Int>().apply {
+//                add(3)
+//            }
+//
+//            val listB = LinkedList<Int>().apply {
+//                add(2)
+//                add(4)
+//                add(6)
+//                add(8)
+//                add(10)
+//                add(12)
+//            }
+
+            val stack = StackImpl<Int>().apply {
+                push(1)
+                push(2)
+                push(3)
+                push(4)
+                push(5)
             }
 
-            val listB = LinkedList<Int>().apply {
-                add(2)
-                add(4)
-                add(6)
-                add(8)
-                add(10)
-                add(12)
+            print(stack)
+
+            stack.pop()?.let {
+                println("Popped out $it")
             }
+
+            print(stack)
 
 //            listB.mergeSorted(listA)
 
-            println(listB.mergeSorted(listA))
+//            println(listB.mergeSorted(listA))
 
 //            list.removeAll(listOf(1, 3, 5, 7, 9))
 
