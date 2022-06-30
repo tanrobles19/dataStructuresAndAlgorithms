@@ -59,11 +59,11 @@ class FirstFragment : Fragment() {
 //                add(10)
 //                add(12)
 //            }
-
-            val list = listOf("A","B","C", "D")
-            val stack = StackImpl.create(list)
-            print(stack)
-            println("Popped: ${stack.pop()}")
+//
+//            val list = listOf("A","B","C", "D")
+//            val stack = StackImpl.create(list)
+//            print(stack)
+//            println("Popped: ${stack.pop()}")
 
 //            val stack = StackImpl<Int>().apply {
 //                push(1)
@@ -79,73 +79,44 @@ class FirstFragment : Fragment() {
 //                println("Popped out $it")
 //            }
 
-            print(stack)
-
-//            listB.mergeSorted(listA)
-
-//            println(listB.mergeSorted(listA))
-
-//            list.removeAll(listOf(1, 3, 5, 7, 9))
-
-//            list.removeAll(listOf(2, 10))
-
-//            list.remove(1)
-
-//            println()
-
-//            list.removeByValue(3)
-
-//            println("size: " + list.size)
-//
-//            for (item in list) {
-//                println("Node: $item")
-//            }
-
-//            list.reverse()
-
-//            for (item in list) {
-//                println("Node: $item")
-//            }
+//            print(stack)
 
 
-//            println("The Middle of the list:")
-//            println(list.middleOfTheList())
+//            val list = listOf(1,2,3,4,5,6)
+//            val stack = StackImpl.create(list)
 
-//            val reverseList = list.reverseList()
-
-//            list.printInReverse()
-//
-//            for (item in reverseList) {
-//                println("reverse: $item")
-//            }
-
-//            val list = LinkedList<Int> ()
-
-//            list.append(1)
-//            list.append(2)
-
-//            println(list)
-
-//            println("Pop() ${list.pop()}")
-
-//            println("RemoveLast() ${list.removeLast()}")
-
-//            list.pop()
-
-//            list.removeByValue(10)
-
-//            list.removeByIndex(3)
-
-//            list.nodeAt(10)?.let {
-//                val node = Node(70, null)
-//                list.insert(node, it)
-//            }
-
-//            println(list)
+            reverseLinkedList()
 
         }
 
     }// end fun onViewCreated
+
+    private fun reverseLinkedList() {
+
+        val list = LinkedList<Int>().apply {
+            add(1)
+            add(2)
+            add(3)
+            add(4)
+            add(5)
+        }
+
+        val stack = StackImpl<Int>()
+
+        var temp = list.head
+
+        while (temp != null) {
+            stack.push(temp.value)
+            temp = temp.next
+        }
+
+        while (!stack.isEmpty){
+            val p = stack.pop()
+            println(p)
+        }
+//        print(stack)
+
+    }// end fun reverseLinckedList()
 
     override fun onDestroyView() {
         super.onDestroyView()
