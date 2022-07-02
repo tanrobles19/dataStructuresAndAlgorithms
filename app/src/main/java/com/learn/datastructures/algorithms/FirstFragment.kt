@@ -85,15 +85,48 @@ class FirstFragment : Fragment() {
 //            val list = listOf(1,2,3,4,5,6)
 //            val stack = StackImpl.create(list)
 
-            reverseLinkedList()
+//            reverseLinkedList()
+
+            checkParenthesesValidation("()(hello world (()())// unba(lanced )paren(theses)()")
 
         }
 
     }// end fun onViewCreated
 
+    private fun checkParenthesesValidation(dataSource: String) {
+
+        val test = dataSource.toCharArray()
+
+        val stack = StackImpl<Char>()
+
+        val leftParenthesis = '('
+        val rightParenthesis = ')'
+
+        for (item in test) {
+
+            if(item != rightParenthesis && item != leftParenthesis) {
+                continue
+            }
+
+            if(stack.isEmpty || stack.peek() == item){
+                stack.push(item)
+            }else{
+                stack.pop()
+            }
+
+        }// end for
+
+        if(stack.isEmpty) {
+            println("Balanced Parenthesis")
+        }else{
+            println("unBalanced Parenthesis")
+        }
+
+    }// end fun checkParenthesesValidation()
+
     private fun reverseLinkedList() {
 
-        val list = LinkedList<Int>().apply {
+        val linkedList = LinkedList<Int>().apply {
             add(1)
             add(2)
             add(3)
@@ -103,7 +136,7 @@ class FirstFragment : Fragment() {
 
         val stack = StackImpl<Int>()
 
-        var temp = list.head
+        var temp = linkedList.head
 
         while (temp != null) {
             stack.push(temp.value)
@@ -114,7 +147,6 @@ class FirstFragment : Fragment() {
             val p = stack.pop()
             println(p)
         }
-//        print(stack)
 
     }// end fun reverseLinckedList()
 
