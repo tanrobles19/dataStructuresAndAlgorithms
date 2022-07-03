@@ -87,41 +87,35 @@ class FirstFragment : Fragment() {
 
 //            reverseLinkedList()
 
-            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
-//            checkParenthesesValidation("{[]}()")
+//            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
+            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))").let {
+                if(it) {
+                    println("Balanced Parenthesis")
+                }else{
+                    println("unBalanced Parenthesis")
+                }
+            }// end fun checkParenthesesValidation
 
         }
 
     }// end fun onViewCreated
 
-    private fun checkParenthesesValidation(dataSource: String) {
+    private fun checkParenthesesValidation(dataSource: String): Boolean {
 
         val charDataSource = dataSource.toCharArray()
 
         val stack = StackImpl<Char>()
 
-        val bracketList = listOf('(', ')', '{', '}', '[', ']')
+        charDataSource.forEachIndexed{index, character ->
 
-        charDataSource.forEachIndexed{index, char ->
-
-            if(bracketList.contains(char)) {
-
-                if(stack.isEmpty || stack.peek() == char){
-                    println("Index $index")
-                    stack.push(char)
-                }else{
-                    stack.pop()
-                }
-
-            }// end if
+            when(character) {
+                '(' -> stack.push(character)
+                ')' -> if (stack.isEmpty) return false else stack.pop()
+            }
 
         }// end for
 
-        if(stack.isEmpty) {
-            println("Balanced Parenthesis")
-        }else{
-            println("unBalanced Parenthesis")
-        }
+        return stack.isEmpty
 
     }// end fun checkParenthesesValidation()
 
