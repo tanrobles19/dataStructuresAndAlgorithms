@@ -87,7 +87,8 @@ class FirstFragment : Fragment() {
 
 //            reverseLinkedList()
 
-            checkParenthesesValidation("()(hello world (()())// unba(lanced )paren(theses)()")
+            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
+//            checkParenthesesValidation("{[]}()")
 
         }
 
@@ -95,24 +96,24 @@ class FirstFragment : Fragment() {
 
     private fun checkParenthesesValidation(dataSource: String) {
 
-        val test = dataSource.toCharArray()
+        val charDataSource = dataSource.toCharArray()
 
         val stack = StackImpl<Char>()
 
-        val leftParenthesis = '('
-        val rightParenthesis = ')'
+        val bracketList = listOf('(', ')', '{', '}', '[', ']')
 
-        for (item in test) {
+        charDataSource.forEachIndexed{index, char ->
 
-            if(item != rightParenthesis && item != leftParenthesis) {
-                continue
-            }
+            if(bracketList.contains(char)) {
 
-            if(stack.isEmpty || stack.peek() == item){
-                stack.push(item)
-            }else{
-                stack.pop()
-            }
+                if(stack.isEmpty || stack.peek() == char){
+                    println("Index $index")
+                    stack.push(char)
+                }else{
+                    stack.pop()
+                }
+
+            }// end if
 
         }// end for
 
