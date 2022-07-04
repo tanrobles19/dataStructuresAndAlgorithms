@@ -12,6 +12,7 @@ import com.learn.datastructures.algorithms.linked.list.findElementToMerge
 import com.learn.datastructures.algorithms.linked.list.merge
 import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.sort.InsertionSort
+import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
 
 /**
@@ -88,11 +89,11 @@ class FirstFragment : Fragment() {
 //            reverseLinkedList()
 
 //            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
-            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))").let {
-                if(it) {
+            checkWrongFirstBracket("(h((e))l(lo(wor(ld)()aA))").let {
+                if(it == null) {
                     println("Balanced Parenthesis")
                 }else{
-                    println("unBalanced Parenthesis")
+                    println("unBalanced Parenthesis: ${it.position}")
                 }
             }// end fun checkParenthesesValidation
 
@@ -118,6 +119,34 @@ class FirstFragment : Fragment() {
         return stack.isEmpty
 
     }// end fun checkParenthesesValidation()
+
+    private fun checkWrongFirstBracket(dataSource: String): Bracket? {
+
+        val charDataSource = dataSource.toCharArray()
+
+        val stack = StackImpl<Bracket>()
+
+        charDataSource.forEachIndexed{index, character ->
+
+            //TODO more complex scenary, you need to keep track of the first wrong bracket
+            // use a Bracket data class to store the index reference.
+
+            val bracket = Bracket(character, index)
+
+            when(character) {
+                '(' -> stack.push(bracket)
+                ')' -> if (stack.isEmpty) return bracket else stack.pop()
+            }
+
+        }// end for
+
+        if(stack.isEmpty) {
+            return null
+        }else{
+            return stack.peek()
+        }
+
+    }// end fun checkWrongFirstBracket()
 
     private fun reverseLinkedList() {
 
