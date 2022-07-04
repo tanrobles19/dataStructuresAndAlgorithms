@@ -12,6 +12,8 @@ import com.learn.datastructures.algorithms.linked.list.findElementToMerge
 import com.learn.datastructures.algorithms.linked.list.merge
 import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.sort.InsertionSort
+import com.learn.datastructures.algorithms.stack.Bracket
+import com.learn.datastructures.algorithms.stack.StackImpl
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -46,84 +48,131 @@ class FirstFragment : Fragment() {
 
         binding.buttonLinkedList.setOnClickListener {
 
-            val listA = LinkedList<Int>().apply {
-                add(3)
-            }
-
-            val listB = LinkedList<Int>().apply {
-                add(2)
-                add(4)
-                add(6)
-                add(8)
-                add(10)
-                add(12)
-            }
-
-//            listB.mergeSorted(listA)
-
-            println(listB.mergeSorted(listA))
-
-//            list.removeAll(listOf(1, 3, 5, 7, 9))
-
-//            list.removeAll(listOf(2, 10))
-
-//            list.remove(1)
-
-//            println()
-
-//            list.removeByValue(3)
-
-//            println("size: " + list.size)
+//            val listA = LinkedList<Int>().apply {
+//                add(3)
+//            }
 //
-//            for (item in list) {
-//                println("Node: $item")
+//            val listB = LinkedList<Int>().apply {
+//                add(2)
+//                add(4)
+//                add(6)
+//                add(8)
+//                add(10)
+//                add(12)
 //            }
-
-//            list.reverse()
-
-//            for (item in list) {
-//                println("Node: $item")
-//            }
-
-
-//            println("The Middle of the list:")
-//            println(list.middleOfTheList())
-
-//            val reverseList = list.reverseList()
-
-//            list.printInReverse()
 //
-//            for (item in reverseList) {
-//                println("reverse: $item")
+//            val list = listOf("A","B","C", "D")
+//            val stack = StackImpl.create(list)
+//            print(stack)
+//            println("Popped: ${stack.pop()}")
+
+//            val stack = StackImpl<Int>().apply {
+//                push(1)
+//                push(2)
+//                push(3)
+//                push(4)
+//                push(5)
+//            }
+//
+//            print(stack)
+//
+//            stack.pop()?.let {
+//                println("Popped out $it")
 //            }
 
-//            val list = LinkedList<Int> ()
+//            print(stack)
 
-//            list.append(1)
-//            list.append(2)
 
-//            println(list)
+//            val list = listOf(1,2,3,4,5,6)
+//            val stack = StackImpl.create(list)
 
-//            println("Pop() ${list.pop()}")
+//            reverseLinkedList()
 
-//            println("RemoveLast() ${list.removeLast()}")
-
-//            list.pop()
-
-//            list.removeByValue(10)
-
-//            list.removeByIndex(3)
-
-//            list.nodeAt(10)?.let {
-//                val node = Node(70, null)
-//                list.insert(node, it)
-//            }
-
-//            println(list)
+//            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
+            checkWrongFirstBracket("(h((e))l(lo(wor(ld)()aA))").let {
+                if(it == null) {
+                    println("Balanced Parenthesis")
+                }else{
+                    println("unBalanced Parenthesis: ${it.position}")
+                }
+            }// end fun checkParenthesesValidation
 
         }
 
     }// end fun onViewCreated
+
+    private fun checkParenthesesValidation(dataSource: String): Boolean {
+
+        val charDataSource = dataSource.toCharArray()
+
+        val stack = StackImpl<Char>()
+
+        charDataSource.forEachIndexed{index, character ->
+
+            when(character) {
+                '(' -> stack.push(character)
+                ')' -> if (stack.isEmpty) return false else stack.pop()
+            }
+
+        }// end for
+
+        return stack.isEmpty
+
+    }// end fun checkParenthesesValidation()
+
+    private fun checkWrongFirstBracket(dataSource: String): Bracket? {
+
+        val charDataSource = dataSource.toCharArray()
+
+        val stack = StackImpl<Bracket>()
+
+        charDataSource.forEachIndexed{index, character ->
+
+            //TODO more complex scenary, you need to keep track of the first wrong bracket
+            // use a Bracket data class to store the index reference.
+
+            val bracket = Bracket(character, index)
+
+            when(character) {
+                '(' -> stack.push(bracket)
+                ')' -> if (stack.isEmpty) return bracket else stack.pop()
+            }
+
+        }// end for
+
+        if(stack.isEmpty) {
+            return null
+        }else{
+            return stack.peek()
+        }
+
+    }// end fun checkWrongFirstBracket()
+
+    private fun reverseLinkedList() {
+
+        val linkedList = LinkedList<Int>().apply {
+            add(1)
+            add(2)
+            add(3)
+            add(4)
+            add(5)
+        }
+
+        val stack = StackImpl<Int>()
+
+        var temp = linkedList.head
+
+        while (temp != null) {
+            stack.push(temp.value)
+            temp = temp.next
+        }
+
+        while (!stack.isEmpty){
+            val p = stack.pop()
+            println(p)
+        }
+
+    }// end fun reverseLinckedList()
 
     override fun onDestroyView() {
         super.onDestroyView()
