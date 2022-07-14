@@ -11,6 +11,7 @@ import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.linked.list.findElementToMerge
 import com.learn.datastructures.algorithms.linked.list.merge
 import com.learn.datastructures.algorithms.linked.list.mergeSorted
+import com.learn.datastructures.algorithms.queue.ArrayListQueue
 import com.learn.datastructures.algorithms.sort.InsertionSort
 import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
@@ -89,13 +90,26 @@ class FirstFragment : Fragment() {
 //            reverseLinkedList()
 
 //            checkParenthesesValidation("(h((e))l(lo(wor(ld)()aA))")
-            checkWrongFirstBracket("(h((e))l(lo(wor(ld)()aA))").let {
-                if(it == null) {
-                    println("Balanced Parenthesis")
-                }else{
-                    println("unBalanced Parenthesis: ${it.position}")
-                }
-            }// end fun checkParenthesesValidation
+//            checkWrongFirstBracket("(h((e))l(lo(wor(ld)()aA))").let {
+//                if(it == null) {
+//                    println("Balanced Parenthesis")
+//                }else{
+//                    println("unBalanced Parenthesis: ${it.position}")
+//                }
+//            }// end fun checkParenthesesValidation
+
+
+            val queue = ArrayListQueue<String>().apply {
+                enqueue("Eithan")
+                enqueue("Lu")
+                enqueue("Issac")
+                enqueue("Jonathan")
+                enqueue("Gaty")
+            }
+
+            println(queue)
+            println(queue.dequeue())
+            println(queue)
 
         }
 
