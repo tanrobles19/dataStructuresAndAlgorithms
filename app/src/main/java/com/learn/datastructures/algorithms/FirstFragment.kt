@@ -21,6 +21,8 @@ import com.learn.datastructures.algorithms.stack.StackImpl
  */
 class FirstFragment : Fragment() {
 
+    private val list = arrayListOf<String>()
+
     private var _binding: FragmentFirstBinding? = null
 
     // This property is only valid between onCreateView and
@@ -98,22 +100,36 @@ class FirstFragment : Fragment() {
 //                }
 //            }// end fun checkParenthesesValidation
 
-
-            val queue = ArrayListQueue<String>().apply {
-                enqueue("Eithan")
-                enqueue("Lu")
-                enqueue("Issac")
-                enqueue("Jonathan")
-                enqueue("Gaty")
-            }
-
-            println(queue)
-            println(queue.dequeue())
-            println(queue)
+            reverseDataInQueue()
 
         }
 
     }// end fun onViewCreated
+
+    private fun reverseDataInQueue() {
+
+        val queue = ArrayListQueue<String>().apply {
+            enqueue("A")
+            enqueue("S")
+            enqueue("A")
+            enqueue("C")
+        }
+
+        println(queue)
+
+        val stack = StackImpl<String>()
+
+        while (!queue.isEmpty) {
+            stack.push(queue.dequeue().toString())
+        }
+
+        while (!stack.isEmpty) {
+            queue.enqueue(stack.pop().toString())
+        }
+
+        println(queue)
+
+    }// end fun reverseDataInQueue()
 
     private fun checkParenthesesValidation(dataSource: String): Boolean {
 
