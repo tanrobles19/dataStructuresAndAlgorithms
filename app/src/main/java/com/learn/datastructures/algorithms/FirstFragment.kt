@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
-import com.learn.datastructures.algorithms.linked.list.findElementToMerge
-import com.learn.datastructures.algorithms.linked.list.merge
-import com.learn.datastructures.algorithms.linked.list.mergeSorted
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
 import com.learn.datastructures.algorithms.sort.InsertionSort
 import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
+import com.learn.datastructures.algorithms.tree.TreeNode
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -100,7 +98,51 @@ class FirstFragment : Fragment() {
 //                }
 //            }// end fun checkParenthesesValidation
 
-            reverseDataInQueue()
+//            reverseDataInQueue()
+
+            val ROOT = TreeNode("Beverages")
+
+            val hot = TreeNode("hot")
+            val cold = TreeNode("cold")
+
+            val tea = TreeNode("tea")
+            val coffee = TreeNode("coffee")
+            val chocolate = TreeNode("cocoa")
+
+            val blackTea = TreeNode("black")
+            val greenTea = TreeNode("green")
+            val chaiTea = TreeNode("chai")
+
+            val soda = TreeNode("soda")
+            val milk = TreeNode("milk")
+
+            val gingerAle = TreeNode("ginger ale")
+            val bitterLemon = TreeNode("bitter lemon")
+
+            val tan = TreeNode("TAN")
+
+            ROOT.add(hot)
+            ROOT.add(cold)
+
+            hot.add(tea)
+            hot.add(coffee)
+            hot.add(chocolate)
+
+            cold.add(soda)
+            cold.add(milk)
+
+            tea.add(blackTea)
+            tea.add(greenTea)
+            tea.add(chaiTea)
+
+            soda.add(gingerAle)
+            soda.add(bitterLemon)
+
+            chaiTea.add(tan)
+
+            ROOT.forEachDepthFirst{
+                println(it.value)
+            }
 
         }
 
