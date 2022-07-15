@@ -140,9 +140,7 @@ class FirstFragment : Fragment() {
 
             chaiTea.add(tan)
 
-            ROOT.forEachDepthFirst{
-                println(it.value)
-            }
+            ROOT.depthFirst(ROOT)
 
         }
 
