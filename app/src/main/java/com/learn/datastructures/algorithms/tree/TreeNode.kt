@@ -60,6 +60,40 @@ class TreeNode<T>(val value: T) {
 
     }// end fun search
 
+    fun searchChallengeOne(root: TreeNode<T>) {
+
+        val queue = ArrayListQueue<TreeNode<T>>()
+
+        root.children.forEach {
+            queue.enqueue(it)
+        }
+
+        println(root.value)
+
+        joinLevel(queue)
+
+    }// end fun searchChallengeOne()
+
+    private fun joinLevel(queue: Queue<TreeNode<T>>) {
+
+        var nodeTemp = queue.dequeue()
+        val newQueue = ArrayListQueue<TreeNode<T>>()
+
+        while (nodeTemp != null) {
+
+            nodeTemp.value?.let { print("$it ") }
+
+            nodeTemp.children.forEach { newQueue.enqueue(it) }
+
+            nodeTemp = queue.dequeue()
+
+        }// end while
+
+        println("")
+        if(!newQueue.isEmpty) joinLevel(newQueue)
+
+    }// end fun joinLevel()
+
 //    fun forEachDepthFirst(visit: Visitor<T>) {
 //        visit(this)
 //        children.forEach{

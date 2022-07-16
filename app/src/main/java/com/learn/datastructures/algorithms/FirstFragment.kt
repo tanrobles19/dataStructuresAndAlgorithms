@@ -99,56 +99,79 @@ class FirstFragment : Fragment() {
 //            }// end fun checkParenthesesValidation
 
 //            reverseDataInQueue()
-
-            val ROOT = TreeNode("Beverages")
-
-            val hot = TreeNode("hot")
-            val cold = TreeNode("cold")
-
-            val tea = TreeNode("tea")
-            val coffee = TreeNode("coffee")
-            val chocolate = TreeNode("cocoa")
-
-            val blackTea = TreeNode("black")
-            val greenTea = TreeNode("green")
-            val chaiTea = TreeNode("chai")
-
-            val soda = TreeNode("soda")
-            val milk = TreeNode("milk")
-
-            val gingerAle = TreeNode("ginger ale")
-            val bitterLemon = TreeNode("bitter lemon")
-
-            val tan = TreeNode("TAN")
-
-            ROOT.add(hot)
-            ROOT.add(cold)
-
-            hot.add(tea)
-            hot.add(coffee)
-            hot.add(chocolate)
-
-            cold.add(soda)
-            cold.add(milk)
-
-            tea.add(blackTea)
-            tea.add(greenTea)
-            tea.add(chaiTea)
-
-            soda.add(gingerAle)
-            soda.add(bitterLemon)
-
-            chaiTea.add(tan)
-
-//            val ROOT = TreeNode("1")
 //
-//            val two = TreeNode("2")
-//            val three = TreeNode("3")
-//            val a = TreeNode("a")
-//            val b = TreeNode("b")
-//            val c = TreeNode("c")
-//            val tan = TreeNode("tan")
+//            val ROOT = TreeNode("Beverages")
 //
+//            val hot = TreeNode("hot")
+//            val cold = TreeNode("cold")
+//
+//            val tea = TreeNode("tea")
+//            val coffee = TreeNode("coffee")
+//            val chocolate = TreeNode("cocoa")
+//
+//            val blackTea = TreeNode("black")
+//            val greenTea = TreeNode("green")
+//            val chaiTea = TreeNode("chai")
+//
+//            val soda = TreeNode("soda")
+//            val milk = TreeNode("milk")
+//
+//            val gingerAle = TreeNode("ginger ale")
+//            val bitterLemon = TreeNode("bitter lemon")
+//
+//            val tan = TreeNode("TAN")
+//
+//            ROOT.add(hot)
+//            ROOT.add(cold)
+//
+//            hot.add(tea)
+//            hot.add(coffee)
+//            hot.add(chocolate)
+//
+//            cold.add(soda)
+//            cold.add(milk)
+//
+//            tea.add(blackTea)
+//            tea.add(greenTea)
+//            tea.add(chaiTea)
+//
+//            soda.add(gingerAle)
+//            soda.add(bitterLemon)
+//
+//            chaiTea.add(tan)
+
+            val ROOT = TreeNode("1")
+//
+            val two = TreeNode("2")
+            val three = TreeNode("3")
+            val four = TreeNode("4")
+
+            val cinco = TreeNode("5")
+            val seis = TreeNode("6")
+            val siete = TreeNode("7")
+            val ocho = TreeNode("8")
+            val nueve = TreeNode("9")
+            val diez = TreeNode("10")
+
+            val a = TreeNode("A")
+            val b = TreeNode("B")
+
+            ROOT.add(two)
+            ROOT.add(three)
+            ROOT.add(four)
+
+            two.add(cinco)
+            two.add(seis)
+            two.add(siete)
+
+            three.add(ocho)
+
+            four.add(nueve)
+            four.add(diez)
+
+            ocho.add(a)
+            ocho.add(b)
+
 //            ROOT.add(two)
 //            ROOT.add(three)
 //
@@ -163,11 +186,13 @@ class FirstFragment : Fragment() {
 
 //            ROOT.levelOrderTraversal(ROOT)
 
+            ROOT.searchChallengeOne(ROOT)
+
 //            println("Search: ${ROOT.search(ROOT, "tea")?.value}")
 
-            ROOT.search(ROOT, "TAmN")?.let {
-                println("Search Value ${it.value}")
-            }?: println("Couldn't find!")
+//            ROOT.search(ROOT, "TAmN")?.let {
+//                println("Search Value ${it.value}")
+//            }?: println("Couldn't find!")
 
         }
 
