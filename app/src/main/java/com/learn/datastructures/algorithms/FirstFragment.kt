@@ -140,7 +140,28 @@ class FirstFragment : Fragment() {
 
             chaiTea.add(tan)
 
-            ROOT.depthFirst(ROOT)
+//            val ROOT = TreeNode("1")
+//
+//            val two = TreeNode("2")
+//            val three = TreeNode("3")
+//            val a = TreeNode("a")
+//            val b = TreeNode("b")
+//            val c = TreeNode("c")
+//            val tan = TreeNode("tan")
+//
+//            ROOT.add(two)
+//            ROOT.add(three)
+//
+//            two.add(a)
+//            two.add(b)
+//
+//            three.add(c)
+//
+//            c.add(tan)
+
+//            ROOT.depthFirst(ROOT)
+
+            ROOT.levelOrderTraversal(ROOT)
 
         }
 
