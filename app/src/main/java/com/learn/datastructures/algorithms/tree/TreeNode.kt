@@ -39,6 +39,27 @@ class TreeNode<T>(val value: T) {
 
     }// end fun levelOrderTraversal
 
+    fun search(nodeTree: TreeNode<T>, value: T): TreeNode<T>? {
+
+        val queue = ArrayListQueue<TreeNode<T>>()
+        nodeTree.children.forEach { queue.enqueue(it) }
+
+        var nodeTemp = queue.dequeue()
+
+        while (nodeTemp != null) {
+            if(nodeTemp.value == value) {
+                return nodeTemp
+            }
+            nodeTemp.children.forEach {
+                queue.enqueue(it)
+            }
+            nodeTemp = queue.dequeue()
+        }
+
+        return null
+
+    }// end fun search
+
 //    fun forEachDepthFirst(visit: Visitor<T>) {
 //        visit(this)
 //        children.forEach{

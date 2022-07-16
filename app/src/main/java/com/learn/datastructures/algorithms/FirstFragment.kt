@@ -161,7 +161,13 @@ class FirstFragment : Fragment() {
 
 //            ROOT.depthFirst(ROOT)
 
-            ROOT.levelOrderTraversal(ROOT)
+//            ROOT.levelOrderTraversal(ROOT)
+
+//            println("Search: ${ROOT.search(ROOT, "tea")?.value}")
+
+            ROOT.search(ROOT, "TAmN")?.let {
+                println("Search Value ${it.value}")
+            }?: println("Couldn't find!")
 
         }
 
