@@ -1,5 +1,7 @@
 package com.learn.datastructures.algorithms.binary.tree
 
+import com.learn.datastructures.algorithms.queue.Queue
+
 //typealias Visitor<T> = (T) -> Unit
 
 class BinaryNode<T: Any>(var value: T) {
@@ -39,5 +41,17 @@ class BinaryNode<T: Any>(var value: T) {
     fun heightOfTheTree() {
 
     }
+
+    fun serialization(node: BinaryNode<String>, queue: Queue<String>): Queue<String> {
+
+        queue.enqueue(node.value)
+
+        node.leftChild?.let { serialization(it, queue) } ?: queue.enqueue("null")
+
+        node.rightChild?.let { serialization(it, queue) }?: queue.enqueue("null")
+
+        return queue
+
+    }// end fun serialization()
 
 }

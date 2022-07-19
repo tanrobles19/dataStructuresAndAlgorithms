@@ -11,6 +11,7 @@ import com.learn.datastructures.algorithms.binary.tree.heightOfTheTree
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
+import com.learn.datastructures.algorithms.queue.Queue
 import com.learn.datastructures.algorithms.sort.InsertionSort
 import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
@@ -204,22 +205,21 @@ class FirstFragment : Fragment() {
 
     private fun buildBinaryTree() {
 
-        val root = BinaryNode("1")
+        val root = BinaryNode("15")
 
-        val two = BinaryNode("2")
-        val three = BinaryNode("3")
-        val pi = BinaryNode("P")
-        val z = BinaryNode("z")
-        val A = BinaryNode("A")
-        val four = BinaryNode("4")
+        val ten = BinaryNode("10")
+        val veinte = BinaryNode("25")
+        val five = BinaryNode("5")
+        val doce = BinaryNode("12")
+        val dies7 = BinaryNode("17")
 
-        val J = BinaryNode("J")
-        val M = BinaryNode("M")
-        val K = BinaryNode("K")
-        val L = BinaryNode("L")
+        root.leftChild = ten
+        root.rightChild = veinte
 
-        root.leftChild = two
-        root.rightChild = three
+        ten.leftChild = five
+        ten.rightChild = doce
+
+        veinte.leftChild = dies7
 
 //        two.leftChild = pi
 //        two.rightChild = z
@@ -227,15 +227,17 @@ class FirstFragment : Fragment() {
 //        three.leftChild = A
 //        three.rightChild = four
 //
-        z.leftChild = J
-        z.rightChild = M
-
-        M.leftChild = L
-
-        four.leftChild =  K
 
         println("start")
-        println("Distance: ${heightOfTheTree(root)}")
+//        println("Distance: ${heightOfTheTree(root)}")
+//        println(root)
+
+
+        val queue= ArrayListQueue<String>()
+        val serializable = root.serialization(root, queue)
+
+        println(serializable.toString())
+
         println("")
         println("end")
 
