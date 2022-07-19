@@ -64,9 +64,7 @@ class TreeNode<T>(val value: T) {
 
         val queue = ArrayListQueue<TreeNode<T>>()
 
-        root.children.forEach {
-            queue.enqueue(it)
-        }
+        root.children.forEach { queue.enqueue(it) }
 
         println(root.value)
 

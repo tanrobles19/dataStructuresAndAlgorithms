@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.learn.datastructures.algorithms.binary.tree.BinaryNode
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
@@ -186,7 +187,7 @@ class FirstFragment : Fragment() {
 
 //            ROOT.levelOrderTraversal(ROOT)
 
-            ROOT.searchChallengeOne(ROOT)
+//            ROOT.searchChallengeOne(ROOT)
 
 //            println("Search: ${ROOT.search(ROOT, "tea")?.value}")
 
@@ -194,9 +195,35 @@ class FirstFragment : Fragment() {
 //                println("Search Value ${it.value}")
 //            }?: println("Couldn't find!")
 
+            buildBinaryTree()
+
         }
 
     }// end fun onViewCreated
+
+    private fun buildBinaryTree() {
+        val zero = BinaryNode(0)
+        val one = BinaryNode(1)
+        val five = BinaryNode(5)
+        val seven = BinaryNode(7)
+        val eight = BinaryNode(8)
+        val nine = BinaryNode(9)
+
+        seven.leftChild = one
+        one.leftChild = zero
+        one.rightChild = five
+        seven.rightChild = nine
+        nine.leftChild = eight
+
+        val tree = seven
+//        println(tree)
+
+        println("start")
+        tree.InOrderTraversal(tree)
+        println("")
+        println("end")
+
+    }
 
     private fun reverseDataInQueue() {
 
