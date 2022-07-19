@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.binary.tree.BinaryNode
+import com.learn.datastructures.algorithms.binary.tree.heightOfTheTree
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
@@ -202,24 +203,39 @@ class FirstFragment : Fragment() {
     }// end fun onViewCreated
 
     private fun buildBinaryTree() {
-        val zero = BinaryNode(0)
-        val one = BinaryNode(1)
-        val five = BinaryNode(5)
-        val seven = BinaryNode(7)
-        val eight = BinaryNode(8)
-        val nine = BinaryNode(9)
 
-        seven.leftChild = one
-        one.leftChild = zero
-        one.rightChild = five
-        seven.rightChild = nine
-        nine.leftChild = eight
+        val root = BinaryNode("1")
 
-        val tree = seven
-//        println(tree)
+        val two = BinaryNode("2")
+        val three = BinaryNode("3")
+        val pi = BinaryNode("P")
+        val z = BinaryNode("z")
+        val A = BinaryNode("A")
+        val four = BinaryNode("4")
+
+        val J = BinaryNode("J")
+        val M = BinaryNode("M")
+        val K = BinaryNode("K")
+        val L = BinaryNode("L")
+
+        root.leftChild = two
+        root.rightChild = three
+
+//        two.leftChild = pi
+//        two.rightChild = z
+//
+//        three.leftChild = A
+//        three.rightChild = four
+//
+        z.leftChild = J
+        z.rightChild = M
+
+        M.leftChild = L
+
+        four.leftChild =  K
 
         println("start")
-        tree.InOrderTraversal(tree)
+        println("Distance: ${heightOfTheTree(root)}")
         println("")
         println("end")
 

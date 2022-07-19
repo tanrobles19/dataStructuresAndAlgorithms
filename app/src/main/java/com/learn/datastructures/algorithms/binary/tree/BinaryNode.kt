@@ -33,5 +33,11 @@ class BinaryNode<T: Any>(var value: T) {
         node.rightChild?.InOrderTraversal(node.rightChild!!)
     }
 
+    /* The height of the Binary tree is determined by the
+     *  distance between the root and the furthest leaf
+     */
+    fun heightOfTheTree() {
+
+    }
 
 }
