@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.binary.tree.BinaryNode
+import com.learn.datastructures.algorithms.binary.tree.deSearializable
 import com.learn.datastructures.algorithms.binary.tree.heightOfTheTree
+import com.learn.datastructures.algorithms.binary.tree.serialization
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
@@ -227,21 +229,27 @@ class FirstFragment : Fragment() {
 //        three.leftChild = A
 //        three.rightChild = four
 //
-
-        println("start")
-//        println("Distance: ${heightOfTheTree(root)}")
-//        println(root)
-
-
-        val queue= ArrayListQueue<String>()
-        val serializable = root.serialization(root, queue)
-
-        println(serializable.toString())
-
-        println("")
-        println("end")
+        serialization(root)
 
     }
+
+    private fun serialization(root: BinaryNode<String>) {
+        println("start")
+
+        val queue = ArrayListQueue<String>()
+        val serializableQueue = serialization(root, queue)
+
+        println(serializableQueue.toString())
+
+        val deSearializableTree = serializableQueue.dequeue()?.let {
+            deSearializable(BinaryNode(it), queue)
+        }
+
+        println( deSearializableTree )
+
+        println()
+        println("end")
+    }// end fun serialization()
 
     private fun reverseDataInQueue() {
 
