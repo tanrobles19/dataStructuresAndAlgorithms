@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.learn.datastructures.algorithms.binary.tree.BinaryNode
-import com.learn.datastructures.algorithms.binary.tree.deSearializable
-import com.learn.datastructures.algorithms.binary.tree.heightOfTheTree
-import com.learn.datastructures.algorithms.binary.tree.serialization
+import com.learn.datastructures.algorithms.binary.tree.*
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
@@ -236,13 +233,13 @@ class FirstFragment : Fragment() {
     private fun serialization(root: BinaryNode<String>) {
         println("start")
 
-        val queue = ArrayListQueue<String>()
-        val serializableQueue = serialization(root, queue)
+        val list: MutableList<String?> = arrayListOf()
+        val serializableList = serializationL(root, list)
 
-        println(serializableQueue.toString())
+        println(serializableList.toString())
 
-        val deSearializableTree = serializableQueue.dequeue()?.let {
-            deSearializable(BinaryNode(it), queue)
+        val deSearializableTree = serializableList.removeAt(0)?.let {
+            deSearializable(BinaryNode(it), serializableList)
         }
 
         println( deSearializableTree )
