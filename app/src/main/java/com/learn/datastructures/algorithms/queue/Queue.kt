@@ -2,7 +2,7 @@ package com.learn.datastructures.algorithms.queue
 
 interface Queue<T: Any> {
 
-    fun enqueue(element: T): Boolean
+    fun enqueue(element: T?): Boolean
 
     fun dequeue(): T?
 

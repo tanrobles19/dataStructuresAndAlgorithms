@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.learn.datastructures.algorithms.binary.tree.*
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
+import com.learn.datastructures.algorithms.queue.Queue
 import com.learn.datastructures.algorithms.sort.InsertionSort
 import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
@@ -99,54 +101,152 @@ class FirstFragment : Fragment() {
 //            }// end fun checkParenthesesValidation
 
 //            reverseDataInQueue()
+//
+//            val ROOT = TreeNode("Beverages")
+//
+//            val hot = TreeNode("hot")
+//            val cold = TreeNode("cold")
+//
+//            val tea = TreeNode("tea")
+//            val coffee = TreeNode("coffee")
+//            val chocolate = TreeNode("cocoa")
+//
+//            val blackTea = TreeNode("black")
+//            val greenTea = TreeNode("green")
+//            val chaiTea = TreeNode("chai")
+//
+//            val soda = TreeNode("soda")
+//            val milk = TreeNode("milk")
+//
+//            val gingerAle = TreeNode("ginger ale")
+//            val bitterLemon = TreeNode("bitter lemon")
+//
+//            val tan = TreeNode("TAN")
+//
+//            ROOT.add(hot)
+//            ROOT.add(cold)
+//
+//            hot.add(tea)
+//            hot.add(coffee)
+//            hot.add(chocolate)
+//
+//            cold.add(soda)
+//            cold.add(milk)
+//
+//            tea.add(blackTea)
+//            tea.add(greenTea)
+//            tea.add(chaiTea)
+//
+//            soda.add(gingerAle)
+//            soda.add(bitterLemon)
+//
+//            chaiTea.add(tan)
 
-            val ROOT = TreeNode("Beverages")
+            val ROOT = TreeNode("1")
+//
+            val two = TreeNode("2")
+            val three = TreeNode("3")
+            val four = TreeNode("4")
 
-            val hot = TreeNode("hot")
-            val cold = TreeNode("cold")
+            val cinco = TreeNode("5")
+            val seis = TreeNode("6")
+            val siete = TreeNode("7")
+            val ocho = TreeNode("8")
+            val nueve = TreeNode("9")
+            val diez = TreeNode("10")
 
-            val tea = TreeNode("tea")
-            val coffee = TreeNode("coffee")
-            val chocolate = TreeNode("cocoa")
+            val a = TreeNode("A")
+            val b = TreeNode("B")
 
-            val blackTea = TreeNode("black")
-            val greenTea = TreeNode("green")
-            val chaiTea = TreeNode("chai")
+            ROOT.add(two)
+            ROOT.add(three)
+            ROOT.add(four)
 
-            val soda = TreeNode("soda")
-            val milk = TreeNode("milk")
+            two.add(cinco)
+            two.add(seis)
+            two.add(siete)
 
-            val gingerAle = TreeNode("ginger ale")
-            val bitterLemon = TreeNode("bitter lemon")
+            three.add(ocho)
 
-            val tan = TreeNode("TAN")
+            four.add(nueve)
+            four.add(diez)
 
-            ROOT.add(hot)
-            ROOT.add(cold)
+            ocho.add(a)
+            ocho.add(b)
 
-            hot.add(tea)
-            hot.add(coffee)
-            hot.add(chocolate)
+//            ROOT.add(two)
+//            ROOT.add(three)
+//
+//            two.add(a)
+//            two.add(b)
+//
+//            three.add(c)
+//
+//            c.add(tan)
 
-            cold.add(soda)
-            cold.add(milk)
+//            ROOT.depthFirst(ROOT)
 
-            tea.add(blackTea)
-            tea.add(greenTea)
-            tea.add(chaiTea)
+//            ROOT.levelOrderTraversal(ROOT)
 
-            soda.add(gingerAle)
-            soda.add(bitterLemon)
+//            ROOT.searchChallengeOne(ROOT)
 
-            chaiTea.add(tan)
+//            println("Search: ${ROOT.search(ROOT, "tea")?.value}")
 
-            ROOT.forEachDepthFirst{
-                println(it.value)
-            }
+//            ROOT.search(ROOT, "TAmN")?.let {
+//                println("Search Value ${it.value}")
+//            }?: println("Couldn't find!")
+
+            buildBinaryTree()
 
         }
 
     }// end fun onViewCreated
+
+    private fun buildBinaryTree() {
+
+        val root = BinaryNode("15")
+
+        val ten = BinaryNode("10")
+        val veinte = BinaryNode("25")
+        val five = BinaryNode("5")
+        val doce = BinaryNode("12")
+        val dies7 = BinaryNode("17")
+
+        root.leftChild = ten
+        root.rightChild = veinte
+
+        ten.leftChild = five
+        ten.rightChild = doce
+
+        veinte.leftChild = dies7
+
+//        two.leftChild = pi
+//        two.rightChild = z
+//
+//        three.leftChild = A
+//        three.rightChild = four
+//
+        serialization(root)
+
+    }
+
+    private fun serialization(root: BinaryNode<String>) {
+        println("start")
+
+        val list: MutableList<String?> = arrayListOf()
+        val serializableList = serializationL(root, list)
+
+        println(serializableList.toString())
+
+        val deSearializableTree = serializableList.removeAt(0)?.let {
+            deSearializable(BinaryNode(it), serializableList)
+        }
+
+        println( deSearializableTree )
+
+        println()
+        println("end")
+    }// end fun serialization()
 
     private fun reverseDataInQueue() {
 

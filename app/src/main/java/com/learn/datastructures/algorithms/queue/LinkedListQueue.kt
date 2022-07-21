@@ -14,8 +14,8 @@ class LinkedListQueue<T: Any> : Queue<T> {
     /*
     * Time Complexity O(1)
     * */
-    override fun enqueue(element: T): Boolean {
-        list.append(element)
+    override fun enqueue(element: T?): Boolean {
+        list.append(element!!)
         size++
         return true
     }

@@ -2,9 +2,9 @@ package com.learn.datastructures.algorithms.queue
 
 class ArrayListQueue<T: Any> : Queue<T>{
 
-    private val list = arrayListOf<T>()
+    private val list = arrayListOf<T?>()
 
-    override fun enqueue(element: T): Boolean {
+    override fun enqueue(element: T?): Boolean {
         list.add(element)
         return true
     }
