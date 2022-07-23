@@ -25,5 +25,22 @@ class BinarySearchTree<T: Comparable<T>>() {
         return node
     }// end insert()
 
+    fun contains(value: T): BinaryNode<T>? {
+
+        if(root == null) return null
+
+        var treeNode = root
+
+        while (treeNode != null) {
+            println(treeNode.value)
+            if(value == treeNode.value) return treeNode
+
+            treeNode = if(value > treeNode.value) treeNode.rightChild else treeNode.leftChild
+
+        }// end while
+
+        return null
+
+    }// end fun contains()
 
 }

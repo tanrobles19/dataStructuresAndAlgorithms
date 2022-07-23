@@ -236,16 +236,22 @@ class FirstFragment : Fragment() {
     //Unbalanced BST
     private fun buildingBST() {
 
-        var bst = BinarySearchTree<Int>().apply {
+        val bst = BinarySearchTree<Int>().apply {
             insert(3)
             insert(1)
             insert(4)
             insert(0)
             insert(2)
-            insert(5)
+            insert(10)
+            insert(12)
         }
 
         println(bst)
+//        println("lookup: ${bst.contains(13)}")
+
+        bst.contains(13)?.let {
+            println("lookup: $it")
+        }?: println("not found!")
 
     }
 
