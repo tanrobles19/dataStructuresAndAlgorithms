@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.learn.datastructures.algorithms.binary.tree.*
+import com.learn.datastructures.algorithms.bst.BinarySearchTree
 import com.learn.datastructures.algorithms.databinding.FragmentFirstBinding
 import com.learn.datastructures.algorithms.linked.list.LinkedList
 import com.learn.datastructures.algorithms.queue.ArrayListQueue
@@ -226,14 +227,42 @@ class FirstFragment : Fragment() {
 //        three.leftChild = A
 //        three.rightChild = four
 //
-        serialization(root)
+//        serialization(root)
+
+        buildingBST()
 
     }
+
+    //Unbalanced BST
+    private fun buildingBST() {
+
+        var bst = BinarySearchTree<Int>().apply {
+            insert(3)
+            insert(1)
+            insert(4)
+            insert(0)
+            insert(2)
+            insert(5)
+        }
+
+        println(bst)
+
+    }
+
+//    // Unbalanced BST
+//    private fun buildingBST() {
+//        val bst = BinarySearchTree<Int>()
+//        (0..4).forEach {
+//            bst.insert(it)
+//        }
+//        println(bst)
+//    }
 
     private fun serialization(root: BinaryNode<String>) {
         println("start")
 
         val list: MutableList<String?> = arrayListOf()
+
         val serializableList = serializationL(root, list)
 
         println(serializableList.toString())
