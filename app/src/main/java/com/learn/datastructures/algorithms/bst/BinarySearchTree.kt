@@ -43,4 +43,45 @@ class BinarySearchTree<T: Comparable<T>>() {
 
     }// end fun contains()
 
+    fun remove(value: T) {
+        root = remove(root, value)
+    }
+
+    private fun remove(node: BinaryNode<T>?, value: T): BinaryNode<T>? {
+        node ?: return null
+
+        when{
+            value == node.value -> validateNode(node)
+            value > node.value -> node.rightChild = remove(node.rightChild , value)
+            else -> node.leftChild = remove(node.leftChild, value)
+
+        }// end when
+        return node
+    }// end fun remove()
+
+    private fun validateNode(node: BinaryNode<T>): BinaryNode<T>? {
+
+        if(node.leftChild == null && node.rightChild == null) {
+            //Leaf node
+            return null
+        }
+
+        if (node.leftChild == null)
+            return node.rightChild
+
+        if (node.rightChild == null)
+            return node.leftChild
+
+        node.rightChild?.min?.value?.let {
+            //replace the node that you removed with the smallest node in its right subtree
+            // it will be the replaced value
+            node.value = it
+        }
+
+        node.rightChild = remove(node.rightChild, node.value)
+
+        return null
+
+    }// end fun validateNode()
+
 }

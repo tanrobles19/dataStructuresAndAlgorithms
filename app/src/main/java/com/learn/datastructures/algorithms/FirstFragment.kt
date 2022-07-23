@@ -249,9 +249,14 @@ class FirstFragment : Fragment() {
         println(bst)
 //        println("lookup: ${bst.contains(13)}")
 
-        bst.contains(13)?.let {
-            println("lookup: $it")
-        }?: println("not found!")
+//        bst.contains(13)?.let {
+//            println("lookup: $it")
+//        }?: println("not found!")
+
+        println("Removed : ${bst.remove(10)}")
+
+        println(bst)
+
 
     }
 
