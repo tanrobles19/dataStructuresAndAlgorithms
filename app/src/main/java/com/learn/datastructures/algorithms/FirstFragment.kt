@@ -16,6 +16,7 @@ import com.learn.datastructures.algorithms.sort.InsertionSort
 import com.learn.datastructures.algorithms.stack.Bracket
 import com.learn.datastructures.algorithms.stack.StackImpl
 import com.learn.datastructures.algorithms.tree.TreeNode
+import com.learn.datastructures.algorithms.uber.FizzBuzzChallenge
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -197,7 +198,11 @@ class FirstFragment : Fragment() {
 //                println("Search Value ${it.value}")
 //            }?: println("Couldn't find!")
 
-            buildBinaryTree()
+//            buildBinaryTree()
+
+            val test : FizzBuzzChallenge = FizzBuzzChallenge()
+
+            test.uberFizzBuzzChallenge(15)
 
         }
 
@@ -229,7 +234,7 @@ class FirstFragment : Fragment() {
 //
 //        serialization(root)
 
-        buildingBST()
+//        buildingBST()
 
     }
 
@@ -246,16 +251,19 @@ class FirstFragment : Fragment() {
             insert(12)
         }
 
-        println(bst)
+//        println(bst)
 //        println("lookup: ${bst.contains(13)}")
 
 //        bst.contains(13)?.let {
 //            println("lookup: $it")
 //        }?: println("not found!")
 
-        println("Removed : ${bst.remove(10)}")
+//        println("Removed : ${bst.remove(10)}")
 
-        println(bst)
+//        println(bst)
+
+//        BST Challanges.
+
 
 
     }
