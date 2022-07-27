@@ -59,5 +59,32 @@ class BinaryNode<T: Comparable<T>>(var value: T) {
 
     }// end fun isBST()
 
+    fun validateEquality(nodeA: BinaryNode<T>?, nodeB: BinaryNode<T>?): Boolean {
+
+        if(nodeA == null && nodeB == null) return true
+
+        if (!compareNode(nodeA?.leftChild, nodeB?.leftChild)) {
+            return false
+        }
+
+        if (!compareNode(nodeA?.rightChild, nodeB?.rightChild)) {
+            return false
+        }
+
+        return validateEquality(nodeA?.leftChild, nodeB?.leftChild) &&
+                validateEquality(nodeA?.rightChild, nodeB?.rightChild)
+
+    }// end fun validateEquality()
+
+    private fun compareNode(nodeA: BinaryNode<T>?, nodeB: BinaryNode<T>?): Boolean {
+
+        if(nodeA == null && nodeB == null) return true
+
+        if(nodeA != null && nodeB != null) return true
+
+        return false
+
+    }// end fun compareNode()
+
 }
 

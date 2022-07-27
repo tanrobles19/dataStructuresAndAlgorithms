@@ -201,15 +201,43 @@ class FirstFragment : Fragment() {
 
 //            buildBinaryTree()
 
-            buildingBST()
+//            buildingBST()
 
 //            val test : FizzBuzzChallenge = FizzBuzzChallenge()
 
 //            test.uberFizzBuzzChallenge(15)
 
+            ChallengeBST()
+
         }
 
     }// end fun onViewCreated
+
+    private fun ChallengeBST() {
+
+        val treeA = BinarySearchTree<Int>().apply {
+            insert(6)
+            insert(3)
+            insert(9)
+            insert(7)
+            insert(20)
+        }
+
+        val treeB = BinarySearchTree<Int>().apply {
+            insert(10)
+            insert(20)
+            insert(15)
+            insert(30)
+            insert(5)
+            insert(3)
+        }
+
+        println(treeA.root?.validateEquality(treeA.root, treeB.root))
+
+//        println(treeA)
+//        println(treeB)
+
+    }// end fun ChallengeBST()
 
     private fun buildBinaryTree() {
 
@@ -263,9 +291,6 @@ class FirstFragment : Fragment() {
         println(bst)
 
         println(bst.root?.isBST(bst.root))
-
-//        BST Challanges.
-
 
 
     }
