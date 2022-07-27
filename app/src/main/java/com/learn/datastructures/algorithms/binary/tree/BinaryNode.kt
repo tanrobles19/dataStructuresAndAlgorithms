@@ -2,7 +2,7 @@ package com.learn.datastructures.algorithms.binary.tree
 
 //typealias Visitor<T> = (T) -> Unit
 
-class BinaryNode<T: Any>(var value: T) {
+class BinaryNode<T: Comparable<T>>(var value: T) {
     var leftChild: BinaryNode<T>? = null
     var rightChild: BinaryNode<T>? = null
 
@@ -43,4 +43,21 @@ class BinaryNode<T: Any>(var value: T) {
 
     }
 
+    fun isBST(node: BinaryNode<T>?): Boolean {
+
+        node?: return true
+
+        node.leftChild?.let{
+            if(node.value <= it.value) return false
+        }
+
+        node.rightChild?.let{
+            if(node.value > it.value) return false
+        }
+
+        return isBST(node.rightChild) && isBST(node.leftChild)
+
+    }// end fun isBST()
+
 }
+

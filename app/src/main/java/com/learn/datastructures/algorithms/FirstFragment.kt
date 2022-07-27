@@ -144,6 +144,7 @@ class FirstFragment : Fragment() {
 //
 //            chaiTea.add(tan)
 
+
             val ROOT = TreeNode("1")
 //
             val two = TreeNode("2")
@@ -200,9 +201,11 @@ class FirstFragment : Fragment() {
 
 //            buildBinaryTree()
 
-            val test : FizzBuzzChallenge = FizzBuzzChallenge()
+            buildingBST()
 
-            test.uberFizzBuzzChallenge(15)
+//            val test : FizzBuzzChallenge = FizzBuzzChallenge()
+
+//            test.uberFizzBuzzChallenge(15)
 
         }
 
@@ -234,8 +237,6 @@ class FirstFragment : Fragment() {
 //
 //        serialization(root)
 
-//        buildingBST()
-
     }
 
     //Unbalanced BST
@@ -247,8 +248,7 @@ class FirstFragment : Fragment() {
             insert(4)
             insert(0)
             insert(2)
-            insert(10)
-            insert(12)
+            insert(5)
         }
 
 //        println(bst)
@@ -260,7 +260,9 @@ class FirstFragment : Fragment() {
 
 //        println("Removed : ${bst.remove(10)}")
 
-//        println(bst)
+        println(bst)
+
+        println(bst.root?.isBST(bst.root))
 
 //        BST Challanges.
 
